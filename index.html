@@ -19,7 +19,7 @@ box-sizing:border-box;
 
 body{
 font-family:'Poppins',sans-serif;
-background:radial-gradient(circle at top,#1c1c28,#050507);
+background:radial-gradient(circle at top,#1a1a25,#050507);
 color:white;
 height:100vh;
 overflow:hidden;
@@ -94,7 +94,7 @@ padding:15px;
 
 background:rgba(255,255,255,0.05);
 
-backdrop-filter:blur(15px);
+backdrop-filter:blur(18px);
 
 border-radius:25px;
 
@@ -155,11 +155,11 @@ margin-top:35px;
 
 text-align:center;
 
-font-size:34px;
+font-size:36px;
 
-line-height:1.8;
+line-height:1.9;
 
-max-width:750px;
+max-width:760px;
 
 margin-left:auto;
 margin-right:auto;
@@ -172,40 +172,43 @@ color:#fff;
 
 text-shadow:
 0 0 10px rgba(255,255,255,0.4),
-0 0 25px rgba(255,100,150,0.3);
+0 0 30px rgba(255,120,160,0.3);
 
 animation:fadeMessage 2s ease;
 
 }
 
-/* FLOATING PARTICLES */
+/* SMALL FLOATING HEARTS */
 
-.particle{
+.heart{
 
 position:absolute;
 
-width:6px;
-height:6px;
+font-size:14px;
 
-background:white;
+opacity:.6;
 
-border-radius:50%;
+color:#ff6b9a;
 
-opacity:.4;
+animation:floatHeart linear infinite;
 
-animation:float 10s linear infinite;
+text-shadow:0 0 8px rgba(255,100,150,0.6);
 
 }
 
-@keyframes float{
+@keyframes floatHeart{
 
 0%{
-transform:translateY(0);
-opacity:.5;
+transform:translateY(0) translateX(0);
+opacity:.6;
+}
+
+50%{
+transform:translateY(-60vh) translateX(20px);
 }
 
 100%{
-transform:translateY(-120vh);
+transform:translateY(-120vh) translateX(-20px);
 opacity:0;
 }
 
@@ -384,23 +387,25 @@ rotatePhotos();
 
 setInterval(rotatePhotos,5000);
 
-setInterval(createParticle,400);
+setInterval(createHeart,500);
 
 }
 
-function createParticle(){
+function createHeart(){
 
-const p=document.createElement("div");
+const heart=document.createElement("div");
 
-p.className="particle";
+heart.className="heart";
 
-p.style.left=Math.random()*100+"vw";
+heart.innerHTML="❤";
 
-p.style.animationDuration=(Math.random()*5+5)+"s";
+heart.style.left=Math.random()*100+"vw";
 
-document.body.appendChild(p);
+heart.style.animationDuration=(Math.random()*5+6)+"s";
 
-setTimeout(()=>p.remove(),10000);
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),11000);
 
 }
 
